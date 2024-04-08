@@ -12,7 +12,7 @@ import { sortBy } from 'lodash-es';
 export class SimpleDatatableComponent {
 @Input() data: EPerson[];
  
-sortOreder = {
+sortOrder = {
   givenName: 'none',
   surName: 'none',
   age: 'none',
@@ -21,17 +21,17 @@ sortOreder = {
 }
 
 sortData(sortKey: string) {
-  if (this.sortOreder[sortKey] === 'asc') {
-    this.sortOreder[sortKey] = 'desc';
+  if (this.sortOrder[sortKey] === 'asc') {
+    this.sortOrder[sortKey] = 'desc';
     this.data = sortBy(this.data, sortKey).reverse();
   } else {
-    this.sortOreder[sortKey] = 'asc';
+    this.sortOrder[sortKey] = 'asc';
     this.data = sortBy(this.data, sortKey);
   }
 
-  for (let key in this.sortOreder) {
+  for (let key in this.sortOrder) {
     if (key !== sortKey) {
-      this.sortOreder[key] = 'none';
+      this.sortOrder[key] = 'none';
     }
   }
 }
