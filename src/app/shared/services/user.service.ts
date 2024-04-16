@@ -1,17 +1,24 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 
-const API_URL = `${environment.apiURL}/user`
+const API_URL = `${environment.apiURL}/user`;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  http: HttpClient = inject(HttpClient)
+  http: HttpClient = inject(HttpClient);
 
   registerUser(user: User) {
-    return this.http.post<{ msg: string }>(`${API_URL}/register`, user)  
+    return this.http.post<{ msg: string }>(`${API_URL}/register`, user);
+  }
+
+  check_duplicate_email(email: string) {
+    return this.http.get<{ msg: string }>(
+      `${API_URL}/check_duplicate_email/${email}`,
+    );
   }
 }
