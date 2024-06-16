@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './restricted-content-example.component.css'
 })
 export class RestrictedContentExampleComponent {
-
+  
 }
